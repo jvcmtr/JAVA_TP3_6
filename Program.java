@@ -4,56 +4,6 @@ import java.util.Scanner;
 public class Program {
     public static void main(String[] args) {
 
-        BigDecimal d = new BigDecimal(23);
-        System.out.println(d.toString());
-
-        d = d.add(new BigDecimal(2));
-        System.out.println(d);
-
-        d = d.add(new BigDecimal(2000));
-        System.out.println(d);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         Scanner in = new Scanner(System.in);
         String input = "";
 
@@ -62,7 +12,8 @@ public class Program {
         Cliente atual = normal;
 
         while (input.compareTo("0") != 0){
-            System.out.println("\n\n________________________________________");
+
+            System.out.println("\n________________________________________");
             System.out.println("Usuario: " + atual.getNome());
             System.out.println("Saldo: B$ " + atual.getSaldo());
             System.out.println("\t[1] - Deposito");
@@ -70,7 +21,7 @@ public class Program {
             System.out.println("\t[3] - Trocar usuàrio");
             System.out.println("\t[0] - Sair");
 
-            input = in.nextLine();
+            input = in.next();
 
             switch (input) {
                 case "1":
@@ -82,9 +33,9 @@ public class Program {
                 case "2":
                     int ii = getInt("Quanto deseja sacar : ", in);
                     String s = atual.saque(new BigDecimal(ii));
-                    System.out.println("sacando ...");
+                    System.out.println("\nsacando ...");
                     s = s.replaceAll(", ", "\n\t").replace(" e ", "\n\t");
-                    System.out.println(s);
+                    System.out.println("\t" +s);
                     break;
                 case "3":
                     if(atual == vip){
@@ -103,13 +54,15 @@ public class Program {
     }
 
     static int getInt(String prompt, Scanner in){
+        String s = "";
         int i = -1;
         boolean valid = false;
 
         while(!valid){    
             try{
                 System.out.print(prompt);
-                i = in.nextInt();
+                s = in.next();
+                i = Integer.parseInt(s);
                 valid = true;
 
             } catch (Exception e) {

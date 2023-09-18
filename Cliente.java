@@ -1,7 +1,7 @@
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-public class Cliente {
+public abstract class Cliente {
     private String nome;
     private ArrayList<String> email;
     private String segurosocial;
@@ -34,7 +34,7 @@ public class Cliente {
         return "incapaz de sacar este valor.";
     }
 
-    private String SacarMinimoDeNotas(BigDecimal valor) {
+    protected String SacarMinimoDeNotas(BigDecimal valor) {
         int[] notas = { 0, 0, 0, 0 };
 
         BigDecimal CINQUENTA = new BigDecimal(50);
@@ -65,6 +65,15 @@ public class Cliente {
         }
 
         return (notas[0] + " notas de\tB$50, " + notas[1] + " notas de\tB$10, " + notas[2] + " notas de\tB$5 e " + notas[3] + " notas de\tB$1");
+    }
+
+    protected boolean setSaldo(BigDecimal valor){
+
+        if (valor.compareTo(BigDecimal.ZERO) > 0) {
+            saldo = valor;
+            return true;
+        }
+        return false;
     }
 
     public String getNome() {
