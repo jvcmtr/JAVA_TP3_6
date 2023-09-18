@@ -64,7 +64,7 @@ public class Cliente {
             ;
         }
 
-        return (notas[0] + " de B$50, " + notas[1] + " de B$10, " + notas[2] + " de B$5 e " + notas[3] + " de B$1");
+        return (notas[0] + " notas de\tB$50, " + notas[1] + " notas de\tB$10, " + notas[2] + " notas de\tB$5 e " + notas[3] + " notas de\tB$1");
     }
 
     public String getNome() {
