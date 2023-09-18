@@ -28,7 +28,7 @@ public class Cliente {
     public String saque(BigDecimal bits) {
         if (saldo.subtract(bits).compareTo(BigDecimal.ZERO) >= 0
                 && bits.compareTo(BigDecimal.ZERO) > 0) {
-            saldo.subtract(bits);
+            saldo = saldo.subtract(bits);
             return SacarMinimoDeNotas(bits);
         }
         return "incapaz de sacar este valor.";
@@ -44,20 +44,22 @@ public class Cliente {
         BigDecimal ZERO = BigDecimal.ZERO;
 
         while (valor.compareTo(ZERO) != 0) {
-
             if (valor.compareTo(CINQUENTA) >= 0) {
                 notas[0] = (notas[0] + 1);
-                valor.subtract(CINQUENTA);
+                valor = valor.subtract(CINQUENTA);
 
             } else if (valor.compareTo(DEZ) >= 0) {
-                notas[0] = (notas[1] + 1);
-                valor.subtract(DEZ);
+                notas[1] = (notas[1] + 1);
+                valor = valor.subtract(DEZ);
+
             } else if (valor.compareTo(CINCO) >= 0) {
-                notas[0] = (notas[2] + 1);
-                valor.subtract(CINCO);
+                notas[2] = (notas[2] + 1);
+                valor = valor.subtract(CINCO);
+
             } else {
-                notas[0] = (notas[3] + 1);
-                valor.subtract(UM);
+                notas[3] = (notas[3] + 1);
+                valor = valor.subtract(UM);
+
             }
             ;
         }
